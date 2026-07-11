@@ -11,14 +11,10 @@ public class Member {
     }
 
     public Member() {
-        this.name = "이름 없음";
-        this.email = "이메일 없음"; 
-        this.age = 0;
+        this("이름 없음", "이메일 없음", 0);
     }
-    
+
     public Member(String name, String email) {
-        this.name = name;
-        this.email = email;
-        this.age = 0;
+        this(name, email, 0);
     }
 }
