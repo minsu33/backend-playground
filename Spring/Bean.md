@@ -6,22 +6,25 @@
 
 # 한 줄 정의
 
-Spring Container가 관리하는 Java 객체
+Spring이 생성하여 Spring Container에서 관리하는 객체
 
 ---
 
 # 왜 필요한가?
 
-기존 Java는 객체를 생성할때 new 연산자를 통해 만들고 의존성 주입, 코드 유지보수모두 직접해야함.
-효율적으로 개발하기 위해 Spring으로 객체를 생성하고 관리하는데 그때 생성된 인스턴스 객체를 Bean이라고 함.
+기존 Java에서는 객체를 생성할 때 `new` 연산자를 사용하여 직접 생성하고 관리해야 했다.
+
+Spring은 객체의 생성과 관리를 대신 수행하며, 이렇게 Spring이 생성하고 관리하는 객체를 Bean이라고 한다.
+
+Bean을 사용하면 객체를 효율적으로 관리하고 필요한 곳에 의존성 주입(DI)을 할 수 있다.
 
 ---
 
 # Bean 등록 예시
 
-1. 어노테이션으로 생성 (자동)
+## 1. 어노테이션으로 등록 (자동)
 
-@Component, @Service, @Repository, @Controller를 이용해서 자동으로 Bean 생성
+`@Component`, `@Service`, `@Repository`, `@Controller`, `@RestController`를 이용하여 자동으로 Bean을 등록한다.
 
 ```java
 @Service
@@ -35,14 +38,18 @@ public class MemberRepository {
 }
 ```
 
-프로그램이 시작되면 @Service 발견 > 객체 생성 > Spring Container에 저장
+프로그램이 시작되면 Spring이 `@Service`와 `@Repository`를 발견하여 객체를 생성하고 Spring Container에 Bean으로 등록한다.
 
-2. @Bean으로 등록 (수동)
-   개발자가 직접 객체중에 어떤 걸 Bean으로 저장할지 정하는 것
-   Configuration 클래스안에 @Bean을 매서드에 넣어서 생성
+---
+
+## 2. @Bean으로 등록 (수동)
+
+개발자가 직접 Bean을 생성하여 Spring Container에 등록하는 방법이다.
+
+`@Configuration` 클래스 안에서 `@Bean`을 메서드에 붙여 등록한다.
 
 ```java
-@Configuration // 설정 클래스
+@Configuration
 public class AppConfig {
 
     @Bean
@@ -53,19 +60,21 @@ public class AppConfig {
 }
 ```
 
-개발자가 직접 등록해야하는 것이기에 코드가 길어지고, 자동생성보다 할 일이 많아짐.
+직접 Bean을 등록해야 하기 때문에 자동 등록보다 코드가 길어질 수 있다.
 
 ---
 
-## 자주 사용하는 어노테이션
+# 자주 사용하는 어노테이션
 
-### @Conponent
+## @Component
 
-> 일반 객체를 Baen으로 등록하는 어노테이션
+> 일반적인 객체를 Bean으로 등록하는 가장 기본적인 어노테이션
 
-### @Controller
+---
 
-> 사용자의 HTTP요청을 처리하는 클래스라고 Spring에게 알려주는 어노테이션
+## @Controller
+
+> 사용자의 HTTP 요청을 처리하는 Controller임을 Spring에게 알려주는 어노테이션
 
 ```java
 @Controller
@@ -75,14 +84,17 @@ public class HomeController {
     public String home() {
         return "index";
     }
+
 }
 ```
 
-HTML(View)로 반환
+주로 HTML(View)을 반환한다.
 
-### @RestController
+---
 
-> REST API 요청을 처리하고 데이터를 JSON 형태로 반환하는 클래스를 Spring에게 알려주는 어노테이션
+## @RestController
+
+> REST API 요청을 처리하고 JSON 형태의 데이터를 반환하는 Controller임을 Spring에게 알려주는 어노테이션
 
 ```java
 @RestController
@@ -96,11 +108,15 @@ public class MemberController {
 }
 ```
 
-### @Service
+주로 JSON 형태의 데이터를 반환한다.
 
-> 비지니스 로직을 담당하는 클래스라고 Spring에게 알려주는 어노테이션
+---
 
-실제 기능을 하는 곳에 붙여준다.
+## @Service
+
+> 비즈니스 로직을 담당하는 클래스임을 Spring에게 알려주는 어노테이션
+
+실제 기능(비즈니스 로직)을 구현하는 곳에 사용한다.
 
 ```java
 @Service
@@ -113,32 +129,67 @@ public class MemberService {
 }
 ```
 
-### @Repository
+---
 
-> 데이터베이스와 직접 통신하는 클래스라고 Spring에게 알려주는 어노테이션
+## @Repository
+
+> 데이터베이스에 접근하여 CRUD를 수행하는 클래스임을 Spring에게 알려주는 어노테이션
 
 ```java
 @Repository
-public class MemberRepository {
+public interface MemberRepository {
 
 }
 ```
 
-Repository를 통해 저장, 조회, 수정, 삭제 기능을 수행한다.
+회원 정보의 저장, 조회, 수정, 삭제 등의 작업을 수행한다.
+
+---
 
 # Spring Container
 
-(직접 작성)
+> Spring이 생성한 Bean을 저장하고 관리하는 공간
+
+동작 과정
+
+
+프로그램 실행
+
+↓
+
+Spring Container 생성
+
+↓
+
+Bean 생성
+
+↓
+
+Spring Container에 저장
+
+↓
+
+필요한 곳에 주입(DI)
+
+↓
+
+Bean 생명주기 관리
+```
 
 ---
 
 # 장점
 
-(직접 작성)
+- 객체를 효율적으로 관리할 수 있다.
+- 객체를 재사용할 수 있다.
+- 의존성 주입(DI)을 사용할 수 있다.
+- 유지보수가 쉬워진다.
+- 테스트하기 쉬워진다.
 
 ---
 
+
 # 참고 자료
 
-- 멋쟁이사자처럼 14기 백엔드 1주차
+- 멋쟁이사자처럼 14기 백엔드 1주차 세션
 - Spring 공식 문서

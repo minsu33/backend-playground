@@ -11,9 +11,5 @@ public class HelloController {
         return "hello";
     }
 
-    @GetMapping("/member")
-    public MemberResponse getMember() {
-        return new MemberResponse("홍길동", "hong@example.com", 30);
-    }
 }
 
