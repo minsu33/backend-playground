@@ -94,7 +94,7 @@ public class HomeController {
 
 ## @RestController
 
-> REST API 요청을 처리하고 JSON 형태의 데이터를 반환하는 Controller임을 Spring에게 알려주는 어노테이션
+> Spring이 HTTP 요청을 처리하는 Controller로 관리하도록 하는 어노테이션
 
 ```java
 @RestController
@@ -108,7 +108,9 @@ public class MemberController {
 }
 ```
 
-주로 JSON 형태의 데이터를 반환한다.
+메서드의 반환값은 HTTP 응답 본문에 들어간다. 문자열을 반환하면 문자열이 응답되고, Java 객체를 반환하면 일반적으로 JSON으로 변환된다.
+
+`@RestController`가 붙은 클래스도 Spring이 생성하고 관리하는 Bean이다.
 
 ---
 
@@ -150,30 +152,14 @@ public interface MemberRepository {
 
 > Spring이 생성한 Bean을 저장하고 관리하는 공간
 
-동작 과정
+동작 과정은 다음과 같다.
 
-
+```text
 프로그램 실행
-
-↓
-
-Spring Container 생성
-
-↓
-
-Bean 생성
-
-↓
-
-Spring Container에 저장
-
-↓
-
-필요한 곳에 주입(DI)
-
-↓
-
-Bean 생명주기 관리
+→ Spring Container 생성
+→ Bean 생성 및 등록
+→ 필요한 곳에 주입(DI)
+→ Bean 생명주기 관리
 ```
 
 ---
