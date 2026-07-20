@@ -70,6 +70,11 @@
 - [ ] Primitive Type과 Reference Type
 - [ ] `equals()`와 `hashCode()`
 - [ ] Immutable Object
+- [ ] Lombok
+  - 주요 Annotation
+  - 생성되는 코드
+  - 사용 시 주의점
+- [ ] Annotation Processor
 - [ ] Exception
   - Checked Exception
   - Unchecked Exception
@@ -94,6 +99,10 @@
   - `.java`
   - `.class`
   - Bytecode
+- [ ] JAR
+  - JAR 구조
+  - 실행 가능한 JAR
+  - `java -jar`
 - [ ] JVM, JRE, JDK
 - [ ] Class Loader
 - [ ] Runtime Data Area
@@ -123,32 +132,35 @@
 
 ### Gradle
 
-- [x] [Gradle](./SpringBoot/Gradle.md)
+- [ ] [Gradle](./DevelopmentTools/Gradle.md)
   - Build
   - `build.gradle`
+  - `settings.gradle`
   - Plugin
   - Repository
   - Dependency
-  - Dependency Configuration
-  - Spring Boot Starter
   - Gradle Wrapper
-  - Java Toolchain
   - Task
-  - `bootRun`
-  - `bootJar`
-  - JAR
-  - SNAPSHOT
-  - Lombok
-  - Annotation Processor
+- [ ] Gradle Dependency Management
+  - Dependency Configuration
+  - `implementation`
+  - `runtimeOnly`
+  - `compileOnly`
+  - `annotationProcessor`
+  - `testImplementation`
+  - Transitive Dependency
+  - Dependency Graph
+  - Version Conflict
 - [ ] Gradle Build Lifecycle
   - Initialization
   - Configuration
   - Execution
-- [ ] Dependency Graph
-- [ ] Transitive Dependency
-- [ ] Version Conflict
+- [ ] Java Toolchain
 - [ ] Multi-project Build
 - [ ] Build Cache
+- [ ] Version
+  - Semantic Versioning
+  - SNAPSHOT
 
 ## 4. Network
 
@@ -285,6 +297,13 @@
 - [ ] `@SpringBootApplication`
 - [ ] Application Context
 - [ ] Application Lifecycle
+- [ ] Spring Boot와 Gradle
+  - Spring Boot Plugin
+  - Dependency Management Plugin
+  - Spring Boot Starter
+  - `bootRun`
+  - `bootJar`
+  - Spring Boot 실행 JAR
 
 ### Configuration
 

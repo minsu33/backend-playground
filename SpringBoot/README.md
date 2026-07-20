@@ -2,10 +2,6 @@
 
 Spring Boot로 API를 만들며 공부한 내용을 기록하는 폴더입니다.
 
-## 개념
-
-- [Gradle](./Gradle.md)
-
 ## 프로젝트
 
 - [Member API](./member-api/README.md): HTTP 요청과 JSON 응답부터 시작하는 회원 API
