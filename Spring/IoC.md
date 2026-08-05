@@ -6,13 +6,13 @@
 
 # 한 줄 정의
 
-객체의 생성과 생명주기 관리를 개발자가 아닌 Spring Container가 담당함.
+객체의 생성과 생명주기를 개발자가 아닌 Spring Container가 관리하는 것.
 
 ---
 
 # 왜 필요한가?
 
-- 객체 생성과 관리를 Spring이 대신 수행한다.
+- 객체를 만들고 관리하는 일을 Spring에 맡길 수 있다.
 - 객체 간의 결합도를 낮출 수 있다.
 - 유지보수와 테스트가 쉬워진다.
 
@@ -28,7 +28,7 @@
 
 # Spring 사용 전
 
-개발자가 new 연산자로 직접 객체를 생성해야함.
+Spring을 사용하지 않으면 개발자가 `new`로 객체를 직접 만든다.
 
 ```java
 public class AdderTest {
@@ -76,7 +76,7 @@ public class AdderTest {
 }
 ```
 
-`Adder` 객체는 Spring Container가 생성하고 `AdderTest`에 전달한다.
+여기서는 Spring Container가 `Adder` 객체를 만든 뒤 `AdderTest`에 전달한다.
 
 ---
 

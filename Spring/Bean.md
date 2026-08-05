@@ -6,17 +6,15 @@
 
 # 한 줄 정의
 
-Spring이 생성하여 Spring Container에서 관리하는 객체
+Spring이 만들고 Spring Container에서 관리하는 객체
 
 ---
 
 # 왜 필요한가?
 
-기존 Java에서는 객체를 생성할 때 `new` 연산자를 사용하여 직접 생성하고 관리해야 했다.
+일반적인 Java 코드에서는 `new`로 객체를 직접 만들고 관리한다.
 
-Spring은 객체의 생성과 관리를 대신 수행하며, 이렇게 Spring이 생성하고 관리하는 객체를 Bean이라고 한다.
-
-Bean을 사용하면 객체를 효율적으로 관리하고 필요한 곳에 의존성 주입(DI)을 할 수 있다.
+Spring에서는 이 일을 Container에 맡길 수 있다. 이렇게 Spring이 만들고 관리하는 객체를 Bean이라고 한다. 등록된 Bean은 필요한 곳에 의존성 주입(DI)으로 전달할 수 있다.
 
 ---
 
@@ -24,7 +22,7 @@ Bean을 사용하면 객체를 효율적으로 관리하고 필요한 곳에 의
 
 ## 1. 어노테이션으로 등록 (자동)
 
-`@Component`, `@Service`, `@Repository`, `@Controller`, `@RestController`를 이용하여 자동으로 Bean을 등록한다.
+`@Component`, `@Service`, `@Repository`, `@Controller`, `@RestController`를 붙이면 Bean을 자동으로 등록할 수 있다.
 
 ```java
 @Service
@@ -38,13 +36,13 @@ public class MemberRepository {
 }
 ```
 
-프로그램이 시작되면 Spring이 `@Service`와 `@Repository`를 발견하여 객체를 생성하고 Spring Container에 Bean으로 등록한다.
+프로그램이 시작될 때 Spring이 `@Service`와 `@Repository`를 찾아 객체를 만들고, Spring Container에 Bean으로 등록한다.
 
 ---
 
 ## 2. @Bean으로 등록 (수동)
 
-개발자가 직접 Bean을 생성하여 Spring Container에 등록하는 방법이다.
+개발자가 Bean 생성 방법을 직접 정해 Spring Container에 등록하는 방식이다.
 
 `@Configuration` 클래스 안에서 `@Bean`을 메서드에 붙여 등록한다.
 
@@ -60,7 +58,7 @@ public class AppConfig {
 }
 ```
 
-직접 Bean을 등록해야 하기 때문에 자동 등록보다 코드가 길어질 수 있다.
+자동 등록보다 코드는 길지만, 외부 라이브러리의 객체를 등록하거나 생성 과정을 직접 정해야 할 때 유용하다.
 
 ---
 
@@ -74,7 +72,7 @@ public class AppConfig {
 
 ## @Controller
 
-> 사용자의 HTTP 요청을 처리하는 Controller임을 Spring에게 알려주는 어노테이션
+> HTTP 요청을 처리하는 Controller라는 것을 Spring에 알려주는 어노테이션
 
 ```java
 @Controller
@@ -94,7 +92,7 @@ public class HomeController {
 
 ## @RestController
 
-> Spring이 HTTP 요청을 처리하는 Controller로 관리하도록 하는 어노테이션
+> HTTP 요청을 처리하고 응답 본문을 반환하는 Controller용 어노테이션
 
 ```java
 @RestController
@@ -116,7 +114,7 @@ public class MemberController {
 
 ## @Service
 
-> 비즈니스 로직을 담당하는 클래스임을 Spring에게 알려주는 어노테이션
+> 비즈니스 로직을 담당하는 클래스라는 것을 Spring에 알려주는 어노테이션
 
 실제 기능(비즈니스 로직)을 구현하는 곳에 사용한다.
 
@@ -135,7 +133,7 @@ public class MemberService {
 
 ## @Repository
 
-> 데이터베이스에 접근하여 CRUD를 수행하는 클래스임을 Spring에게 알려주는 어노테이션
+> 데이터베이스에 접근하는 클래스라는 것을 Spring에 알려주는 어노테이션
 
 ```java
 @Repository
@@ -150,7 +148,7 @@ public interface MemberRepository {
 
 # Spring Container
 
-> Spring이 생성한 Bean을 저장하고 관리하는 공간
+> Spring이 만든 Bean을 보관하고 관리하는 공간
 
 동작 과정은 다음과 같다.
 
