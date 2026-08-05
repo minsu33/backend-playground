@@ -1,10 +1,8 @@
 # Spring
 
-# Spring?
+객체 생성과 의존성 관리를 도와주는 Java 기반 프레임워크입니다.
 
-객체 생성과 의존성 관리를 도와주는 JAVA기반 프레임워크
+## 공부한 내용
 
-# 구조
-Spring/
-- Ioc.md
-- DI.md
+- [IoC](./IoC.md)
+- [Bean](./Bean.md)

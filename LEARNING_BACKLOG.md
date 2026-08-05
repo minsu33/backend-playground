@@ -132,7 +132,7 @@
 
 ### Gradle
 
-- [ ] [Gradle](./DevelopmentTools/Gradle.md)
+- [x] [Gradle](./DevelopmentTools/Gradle.md)
   - Build
   - `build.gradle`
   - `settings.gradle`
@@ -141,13 +141,14 @@
   - Dependency
   - Gradle Wrapper
   - Task
-- [ ] Gradle Dependency Management
+- [ ] [Gradle Dependency Configuration](./DevelopmentTools/GradleDependencyConfiguration.md)
   - Dependency Configuration
   - `implementation`
   - `runtimeOnly`
   - `compileOnly`
   - `annotationProcessor`
   - `testImplementation`
+- [ ] Gradle Dependency Graph
   - Transitive Dependency
   - Dependency Graph
   - Version Conflict
